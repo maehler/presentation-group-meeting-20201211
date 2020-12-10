@@ -3,10 +3,7 @@
  * from reveal.js.
  *
  */
-@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
-section.has-light-background, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
-  color: #222; }
-
+@import url(./fonts/source-sans-pro/source-sans-pro.css);
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
@@ -30,9 +27,9 @@ section.has-light-background, section.has-light-background h1, section.has-light
   --heading3-size: 1.3em;
   --heading4-size: 1em;
   --code-font: monospace;
-  --link-color: #42affa;
-  --link-color-hover: #8dcffc;
-  --selection-background-color: #bee4fd;
+  --link-color: #be162c;
+  --link-color-hover: #e8384f;
+  --selection-background-color: #ed6678;
   --selection-color: #fff; }
 
 .reveal-viewport {
@@ -47,12 +44,12 @@ section.has-light-background, section.has-light-background h1, section.has-light
 
 .reveal ::selection {
   color: #fff;
-  background: #bee4fd;
+  background: #ed6678;
   text-shadow: none; }
 
 .reveal ::-moz-selection {
   color: #fff;
-  background: #bee4fd;
+  background: #ed6678;
   text-shadow: none; }
 
 .reveal .slides section,
@@ -246,18 +243,18 @@ section.has-light-background, section.has-light-background h1, section.has-light
  * LINKS
  *********************************************/
 .reveal a {
-  color: #42affa;
+  color: #be162c;
   text-decoration: none;
   transition: color .15s ease; }
 
 .reveal a:hover {
-  color: #8dcffc;
+  color: #e8384f;
   text-shadow: none;
   border: none; }
 
 .reveal .roll span:after {
   color: #fff;
-  background: #068de9; }
+  background: #790e1c; }
 
 /*********************************************
  * Frame helper
@@ -270,21 +267,21 @@ section.has-light-background, section.has-light-background h1, section.has-light
   transition: all .15s linear; }
 
 .reveal a:hover .r-frame {
-  border-color: #42affa;
+  border-color: #be162c;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
 
 /*********************************************
  * NAVIGATION CONTROLS
  *********************************************/
 .reveal .controls {
-  color: #42affa; }
+  color: #be162c; }
 
 /*********************************************
  * PROGRESS BAR
  *********************************************/
 .reveal .progress {
   background: rgba(0, 0, 0, 0.2);
-  color: #42affa; }
+  color: #be162c; }
 
 /*********************************************
  * PRINT BACKGROUND
@@ -293,10 +290,23 @@ section.has-light-background, section.has-light-background h1, section.has-light
   .backgrounds {
     background-color: #222; } }
 
-.reveal section img {
+.reveal .slides section {
+  text-align: left; }
+  .reveal .slides section.center {
+    text-align: center; }
+  .reveal .slides section.has-light-background h1, .reveal .slides section.has-light-background h2, .reveal .slides section.has-light-background h3, .reveal .slides section.has-light-background h4, .reveal .slides section.has-light-background h5, .reveal .slides section.has-light-background h6 {
+    color: #222; }
+
+.reveal .slides section img {
   border: none;
   background: none;
   box-shadow: none; }
+
+.reveal .background .stripe1 {
+  height: 300px;
+  width: 300px;
+  background-color: #be162c;
+  rotate: 45; }
 
 .slidelink {
   position: absolute;

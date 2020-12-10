@@ -12,7 +12,7 @@
 
 
 // Include theme-specific fonts
-@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+@import url(./fonts/source-sans-pro/source-sans-pro.css);
 
 
 // Override theme settings (see ../template/settings.scss)
@@ -28,7 +28,7 @@ $headingTextShadow: none;
 $headingLetterSpacing: normal;
 $headingTextTransform: none;
 $headingFontWeight: 600;
-$linkColor: #42affa;
+$linkColor: #be162c;
 $linkColorHover: lighten( $linkColor, 15% );
 $selectionBackgroundColor: lighten( $linkColor, 25% );
 
@@ -37,21 +37,38 @@ $heading2Size: 1.6em;
 $heading3Size: 1.3em;
 $heading4Size: 1.0em;
 
-section.has-light-background {
-	&, h1, h2, h3, h4, h5, h6 {
-		color: #222;
-	}
-}
-
 
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
 
-.reveal section img {
+.reveal .slides section {
+    text-align: left;
+
+    &.center {
+        text-align: center;
+    }
+
+    &.has-light-background {
+        h1, h2, h3, h4, h5, h6 {
+            color: #222;
+        }
+    }
+}
+
+.reveal .slides section img {
     border: none;
     background: none;
     box-shadow: none;
+}
+
+.reveal {
+    .stripe1 {
+        height: 300px;
+        width: 300px;
+        background-color: #be162c;
+        rotate: 45;
+    }
 }
 
 .slidelink {

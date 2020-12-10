@@ -8,16 +8,306 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+		<!-- <link rel="stylesheet" href="dist/theme/black.css" id="theme"> -->
+		<link rel="stylesheet" href="dist/theme/maehler_dark.css" id="theme">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<link rel="stylesheet" href="css/acknowledgements.css">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section class="title" data-background-image="https://farm5.staticflickr.com/4480/37824851012_63f6b6940c_o.jpg"
+				data-background-opacity="0.4">
+		   <!-- Background photo: https://www.flickr.com/photos/74738817@N07/37824851012 -->
+					<h1 class="r-fit-text">Assembling conifer genomes</h1>
+					<p>
+						Niklas Mähler<br>
+						<small>Group meeting 2020-12-11</small>
+					</p>
+				</section>
+
+				<section data-background-image="https://farm6.staticflickr.com/5690/21457742918_964178f889_o_d.jpg"
+						data-background-opacity="0.2">
+					<h2>Why are we doing this?</h2>
+					<ul>
+						<li>First spruce assembly highly fragmented</li>
+						<li>Ecologically and economically important species</li>
+						<li>A large number of existing field trials</li>
+					</ul>
+				</section>
+
+				<section data-background-image="img/spruce_trials_trim.png"
+							data-background-position="bottom 0 right 0"
+							data-background-size="35%">
+					<p style="width: 60%">Current spruce trials</p>
+				</section>
+
+				<section data-background-image="img/pine_trials_trim.png"
+							data-background-position="bottom 0 right 0"
+							data-background-size="35%">
+					<p style="width: 60%">Current pine trials</p>
+				</section>
+
+				<section class="center">
+					<img src="img/byholma.jpg" alt="Wood stockpile on an airfield after the hurricane Gudrun">
+					<aside class="notes">
+						<p>
+							Wood stockpile at an airfield in Byholma, Småland, after the hurricane Gudrun.
+							About 1 million cubic metres of wood, about 4 million logs.
+							Roughly equivalent to the amount of biomass produced by Swedish forests in one day.
+						</p>
+					</aside>
+				</section>
+
+				<section class="center">
+					<img src="img/nystedt2013.png" alt="Nystedt et al. 2013">
+					<p class="fragment">More than 10 million scaffolds</p>
+				</section>
+
+				<section>
+					<h2>Why is it so difficult?</h2>
+					<p>
+						<span class="fragment">These genomes are big</span><span class="fragment">, highly heterozyogus</span>
+						<span class="fragment">and full of repeats</span>
+					</p>
+					<aside class="notes">
+						<p>
+							The issue with repeats made it especially difficult to assemble using short reads,
+							as was done for the first version of the genome.
+						</p>
+					</aside>
+				</section>
+
+				<section class="center">
+					<img class="stretch" src="img/repeats.svg" alt="Repeats">
+				</section>
+
+				<section class="center">
+					<h2>First attempt</h2>
+					<ul>
+						<li>50X PacBio Continuous Long Reads (CLR)</li>
+						<li>50X NovaSeq short reads</li>
+					</ul>
+				</section>
+
+				<section class="center">
+					<img src="img/onedoesnotsimply.jpg" alt="One does not simply assemble a conifer">
+				</section>
+
+				<section data-background-image="https://screenrant.com/wp-content/uploads/2017/04/Marvel-Legacy-cover-by-Joe-Quesada-art.jpg"
+						data-background-opacity="0.3">
+					<h2>MARVEL</h2>
+					<p>Nice on paper, not so much in practice (at least in our hands)</p>
+					<p>After having used several million CPU hours, it spat out an assembly of 1.4 Gbp&hellip;</p>
+					<aside class="notes">
+						<p>Developed for the assembly of the axolotl genome (32 Gbp)</p>
+						<p>Spent the better part of a year trying to get an assembly out of it</p>
+					</aside>
+				</section>
+
+				<section data-background-image="https://screenrant.com/wp-content/uploads/2017/04/Marvel-Legacy-cover-by-Joe-Quesada-art.jpg">
+				</section>
+				<section data-background-image="img/bad_avengers.jpg"></section>
+
+				<section data-background-image="https://live.staticflickr.com/44/147254059_9fed8819e8_o.jpg"
+					data-background-opacity="0.3"
+					data-background-position="top">
+		   			<!-- Image source: https://www.flickr.com/photos/jerbec/147254059 -->
+					<h2>wtdbg2</h2>
+					<p>
+						<span class="fragment">&hellip; or watchtower</span>
+						<span class="fragment">&hellip; or redbean</span>
+					</p>
+					<ul>
+						<li class="fragment">Much faster, but memory hungry</li>
+						<li class="fragment">~19 Gbp assembly</li>
+						<li class="fragment">Many small errors</li>
+					</ul>
+					<aside class="notes">
+						<p>Still we were a bit skeptical</p>
+						<p>
+							Part of that skepticism came from that it seemed to generate an assembly of the size you wanted, regardless of what data you gave it.
+							We said we wanted a 20 Gbp assembly, and we got it.
+							I think it was Manfred who mistakenly entered the wrong number here and missed a zero.
+							He got an assembly of only a few Gbp.
+						</p>
+					</aside>
+				</section>
+
+				<section data-background-image="https://live.staticflickr.com/4768/39528300974_4a3528040f_k_d.jpg"
+						data-background-opacity="0.4">
+						<!-- Image source: https://www.flickr.com/photos/hammershaug/39528300974 -->
+					<h2>HiFi to the rescue</h2>
+					<ul>
+						<li>PacBio Circular Concensus Sequencing (CCS)</li>
+						<li>Long reads with low error rate</li>
+						<li>30X coverage, last data for spruce arrived last week</li>
+					</ul>
+					<aside class="notes">
+						<p>
+
+						</p>
+						<p>
+							As a consequence, all the spruce stuff I will show comes
+							from a lower coverage dataset.
+						</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>hifiasm</h2>
+					<ul>
+						<li class="fragment">Incredibly fast and resource efficient</li>
+						<li class="fragment">Very easy to use</li>
+						<li class="fragment">~34 Gbp assembly</li>
+					</ul>
+					<img src="img/hifiasm.png" alt="hifiasm citation">
+					<aside class="notes">
+						<p>
+							Now we're talking!
+							But what is actually going on?
+						</p>
+					</aside>
+				</section>
+
+				<section data-transition="slide-in fade-out" class="center">
+					<h2 class="r-fit-text">Almost a completely split assembly</h2>
+					<img src="img/hifi_alignment_coverage.png" alt="Coverage of HiFi reads against the assembly">
+				</section>
+
+				<section data-transition="fade-in slide-out" class="center">
+					<h2 class="r-fit-text">Almost a completely split assembly</h2>
+					<img src="img/hifi_alignment_coverage_diploid-line.png" alt="Coverage of HiFi reads against the assembly with the position of the expected homozygous peak marked">
+				</section>
+
+				<section class="center">
+					<h2>Haplotype purging</h2>
+					<ul>
+						<li>Built-in to hifiasm</li>
+						<li>Obviously doesn't work for us</li>
+					</ul>
+					<img src="img/purge_dups.png" alt="purge_dups publication details">
+				</section>
+
+				<section data-transition="slide-in fade-out">
+					<img src="img/read_kmers.png" alt="">
+				</section>
+
+				<section data-transition="fade">
+					<img src="img/assembly_nopurge_kmers.png" alt="">
+				</section>
+
+				<section data-transition="fade">
+					<img src="img/assembly_purgedups-default_kmers.png" alt="">
+				</section>
+
+				<section data-transition="fade-in slide-out">
+					<img src="img/assembly_purgedups-manual_kmers.png" alt="">
+				</section>
+
+				<section class="center">
+					<h2>Are we there yet?</h2>
+				</section>
+
+				<section class="center">
+					<img src="img/assembly_size_comparison.png" alt="Assembly size comparison">
+				</section>
+
+				<section class="center">
+					<img src="img/read_n50_comparison.png" alt="Assembly size comparison">
+				</section>
+
+				<section class="center">
+					<img src="img/contig_n50_comparison.png" alt="Assembly size comparison">
+				</section>
+
+				<section>
+					<h2>What's next?</h2>
+					<ul>
+						<li class="fragment">Repeat all of this for pine</li>
+						<li class="fragment">Evaluation</li>
+						<li class="fragment">Scaffolding with HiC</li>
+						<li class="fragment">More evaluation</li>
+						<li class="fragment">Annotation</li>
+					</ul>
+					<aside class="notes">
+						<p>The plan is to have a locked assembly in the beginning of February.</p>
+					</aside>
+				</section>
+
+				<section data-background-image="https://farm6.staticflickr.com/5690/21457742918_964178f889_o_d.jpg"
+						 data-background-opacity="0.2"
+						 class="center">
+                    <!-- Background photo: https://www.flickr.com/photos/befuddledsenses/21457742918/ -->
+                    <h3>Acknowledgements</h3>
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-content: space-between; align-items: center; font-size: 0.6em;">
+                        <div class="acknowledgement">
+                            <h4>Umeå</h4>
+                            <ul>
+                                <li>Nathaniel Street</li>
+                                <li>Ove Nilsson</li>
+                                <li>Harry Wu</li>
+								<li>Nicolas Delhomme</li>
+								<li>Vikash Kumar</li>
+                                <li>Bastian Schiffthaler</li>
+                                <li>Chanaka Mannapperuma</li>
+                                <li>Alexis Sullivan</li>
+                            </ul>
+                        </div>
+
+                        <div class="acknowledgement" style="width: 30%">
+                            <figure><img src="img/umu-logo-neg-EN.png" alt="Umeå University"></figure>
+                            <figure style="width: 40%;"><img src="img/slu_logo_vit.png" alt="SLU"></figure>
+                            <figure style="width: 30%;"><img src="img/upsc_logo.png" alt="UPSC"></figure>
+                        </div>
+
+                        <div class="acknowledgement">
+                            <figure>
+                                <img style="width: 10em;" src="img/scilifelab_green_white.png" alt="SciLifeLab">
+                            </figure>
+                            <ul>
+								<li>Tomas Larsson</li>
+								<li>Tom van der Valk</li>
+								<li>Per Unneberg</li>
+                                <li>Manfred Grabherr</li>
+                                <li>Ignas Bunikis</li>
+                                <li>Remi-André Olsen</li>
+                                <li>Ellen Sherwood</li>
+                                <li>Ulf Gyllensten</li>
+                                <li>Björn Nystedt</li>
+                            </ul>
+                        </div>
+
+                        <div class="acknowledgement">
+                            <h4>Vienna</h4>
+                            <ul>
+                                <li>Siegfried Schloissnig</li>
+                            </ul>
+                            <figure style="margin-top: 1em;">
+                                <img style="width: 5em;" src="img/IMP_Logo.jpg" alt="IMP">
+                            </figure>
+                        </div>
+
+                        <div class="acknowledgement">
+                            <h4>Computing</h4>
+                            <ul>
+                                <li>UPPMAX</li>
+                                <li>SNIC</li>
+                                <li>Marcus Lundberg</li>
+                            </ul>
+                        </div>
+
+                        <div class="acknowledgement">
+                            <h4>Funding</h4>
+                            <figure style="margin-top: 1em;">
+                                <img style="width: 10em;" src="img/kaw_logo_white.svg" alt="KAW">
+                            </figure>
+                        </div>
+                    </div>
+                </section>
 			</div>
 		</div>
 
@@ -25,7 +315,12 @@
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/chart/Chart.min.js"></script>
+		<script src="plugin/chart/plugin.js"></script>
+		<!-- <script src="/Users/maehler/git/reveal-title/reveal-title.js"></script> -->
+
 		<script>
+			// import TitlePage from '../reveal-title/reveal-title.js';
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
@@ -33,7 +328,7 @@
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealChart ]
 			});
 		</script>
 	</body>
